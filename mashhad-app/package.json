@@ -1,0 +1,22 @@
+{
+  "name": "mashhad-app",
+  "version": "1.0.0",
+  "description": "An app for Persian speakers",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/husaft/Mashhad.git"
+  },
+  "keywords": [
+    "persian"
+  ],
+  "author": "husaft",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/husaft/Mashhad/issues"
+  },
+  "homepage": "https://github.com/husaft/Mashhad#readme"
+}
