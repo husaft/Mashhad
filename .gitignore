@@ -102,3 +102,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Intermediate files
+mashhad-lib/src/*.js
+mashhad-lib/tests/*.js
+*.js.map
+package-lock.json
