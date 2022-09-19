@@ -4,7 +4,7 @@
   "description": "A library for Persian speakers",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "tsc --build && jest"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/husaft/Mashhad/issues"
   },
-  "homepage": "https://github.com/husaft/Mashhad#readme"
+  "homepage": "https://github.com/husaft/Mashhad#readme",
+  "devDependencies": {
+    "@types/jest": "^27.5.1",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.5"
+  }
 }
