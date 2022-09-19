@@ -1,28 +1,38 @@
-name: NodeJS with Webpack
+name: github pages
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
+
+  workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x, 18.x]
-    
+    defaults:
+      run:
+        working-directory: ./mashhad-app
     steps:
-    - uses: actions/checkout@v3
+      # Checkout the code
+      - uses: actions/checkout@v3
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
+      # Install NodeJS
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
 
-    - name: Build
-      run: |
-        npm install
-        npx webpack
+      # Publish the site
+      - name: Publish
+        run: |
+          npm install
+          npm run build
+
+      # Deploy the site
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: mashhad-app/dist
+          force_orphan: true
