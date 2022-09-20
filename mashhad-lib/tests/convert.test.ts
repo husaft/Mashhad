@@ -146,17 +146,20 @@ describe("testing letters", () => {
         is(romanize("سلام"), "salam");
         is(romanize("تهران"), "tehran");
         is(romanize("مشهد"), "mashhad");
+        is(romanize("ایران"), "iran");
+        is(romanize("اسلامی"), "eslamiye");
+        is(romanize("جمهوری"), "jomhuriye");
     });
 
     test("check words persian", () => {
         is(persianize("salam"), "سلام");
         is(persianize("tehran"), "تهران");
         is(persianize("mashhad"), "مشهد");
+        is(persianize("iran"), "ایران");
+        is(persianize("eslamiye"), "اسلامی");
+        is(persianize("jomhuriye"), "جمهوری");
     });
 
-    /*test("check sentences", () => {
-        // ?
-    });*/
 
     function is(first: string, second: string): void {
         expect(Array.from(first).toString()).toBe(Array.from(second).toString());

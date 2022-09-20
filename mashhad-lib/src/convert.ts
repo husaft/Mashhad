@@ -34,7 +34,14 @@ const charP2R = new Map<string, string>([
     ["ش", "sh"],
     ["هد", "had"],
     ["مش", "mash"],
-    ["ته", "teh"]
+    ["ته", "teh"],
+    ["ی", "ye"],
+    ["می", "miye"],
+    ["اس", "es"],
+    ["ای", "i"],
+    ["جم", "jom"],
+    ["هو", "hur"],
+    ["ری", "iye"]
 ]);
 
 const charR2P = swap(charP2R);
