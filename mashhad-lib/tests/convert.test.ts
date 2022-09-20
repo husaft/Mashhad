@@ -144,6 +144,8 @@ describe("testing letters", () => {
 
     test("check words roman", () => {
         is(romanize("سلام"), "salam");
+        is(romanize("سلام", true), "Salam");
+
         is(romanize("تهران"), "tehran");
         is(romanize("مشهد"), "mashhad");
         is(romanize("ایران"), "iran");
@@ -153,6 +155,8 @@ describe("testing letters", () => {
 
     test("check words persian", () => {
         is(persianize("salam"), "سلام");
+        is(persianize("Salam"), "سلام");
+
         is(persianize("tehran"), "تهران");
         is(persianize("mashhad"), "مشهد");
         is(persianize("iran"), "ایران");
@@ -162,10 +166,12 @@ describe("testing letters", () => {
 
     test("check sentences roman", () => {
         is(romanize("جمهوری اسلامی ایران"), "jomhuriye eslamiye iran");
+        is(romanize("جمهوری اسلامی ایران", true), "Jomhuriye Eslamiye Iran");
     });
 
     test("check sentences persian", () => {
         is(persianize("jomhuriye eslamiye iran"), "جمهوری اسلامی ایران");
+        is(persianize("Jomhuriye Eslamiye Iran"), "جمهوری اسلامی ایران");
     });
 
     function is(first: string, second: string): void {

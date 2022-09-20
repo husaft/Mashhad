@@ -53,10 +53,11 @@ function swap<TK, TV>(input: Map<TK, TV>): Map<TV, TK> {
     return map;
 }
 
-export function persianize(input: string): string {
-    if (input === undefined || input === null)
+export function persianize(raw: string): string {
+    if (raw === undefined || raw === null)
         return "";
 
+    const input = raw.toLowerCase();
     let text = "";
     let step = 1;
     for (let i = 0; i < input.length; i += step) {
@@ -97,7 +98,7 @@ export function persianize(input: string): string {
     return text;
 }
 
-export function romanize(input: string): string {
+export function romanize(input: string, upper: boolean = false): string {
     if (input === undefined || input === null)
         return "";
 
@@ -132,6 +133,9 @@ export function romanize(input: string): string {
             conv = charP2R.get(item); step = 1;
         }
         if (conv !== undefined) {
+            if (upper && (text.length === 0 || text.charAt(text.length - 1) === ' ')) {
+                conv = conv.toUpperCase().charAt(0) + conv.substring(1);
+            }
             text += conv;
             continue;
         }
