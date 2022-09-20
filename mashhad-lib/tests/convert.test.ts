@@ -142,23 +142,23 @@ describe("testing letters", () => {
         expect(persianize("1000000")).toBe("۱۰۰۰۰۰۰");
     });
 
-    /*test("check letters", () => {
-        // ?
-    });*/
+    test("check words roman", () => {
+        is(romanize("سلام"), "salam");
+        is(romanize("تهران"), "tehran");
+        is(romanize("مشهد"), "mashhad");
+    });
 
-    /*test("check words", () => {
-        expect(romanize("سلام")).toBe("Salam");
-        expect(persianize("Salam")).toBe("سلام");
-
-        expect(romanize("مشهد")).toBe("Mashhad");
-        expect(persianize("Mashhad")).toBe("مشهد");
-
-        expect(romanize("تهران")).toBe("Tehran");
-        expect(persianize("Tehran")).toBe("تهران");
-    });*/
+    test("check words persian", () => {
+        is(persianize("salam"), "سلام");
+        is(persianize("tehran"), "تهران");
+        is(persianize("mashhad"), "مشهد");
+    });
 
     /*test("check sentences", () => {
         // ?
     });*/
 
+    function is(first: string, second: string): void {
+        expect(Array.from(first).toString()).toBe(Array.from(second).toString());
+    }
 });

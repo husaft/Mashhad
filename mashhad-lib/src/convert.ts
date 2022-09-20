@@ -15,6 +15,26 @@ const numP2R = new Map<string, string>([
 const numR2P = swap(numP2R);
 
 const charP2R = new Map<string, string>([
+    ["ب", "b"],
+    ["پ", "p"],
+    ["ت", "t"],
+    ["د", "d"],
+    ["ر", "r"],
+    ["ز", "z"],
+    ["س", "s"],
+    ["ف", "f"],
+    ["ک", "k"],
+    ["گ", "ɡ"],
+    ["ل", "l"],
+    ["م", "m"],
+    ["ن", "n"],
+    ["ا", "a"],
+    ["سل", "sal"],
+    ["ه", "h"],
+    ["ش", "sh"],
+    ["هد", "had"],
+    ["مش", "mash"],
+    ["ته", "teh"]
 ]);
 
 const charR2P = swap(charP2R);
@@ -31,7 +51,9 @@ export function persianize(input: string): string {
         return "";
 
     let text = "";
-    for (let i = input.length - 1; i >= 0; i--) {
+    let step = 1;
+    for (let i = 0; i < input.length; i += step) {
+        step = 1;
         const item = input.charAt(i);
         if (item === ' ' || item === '\r' || item === '\n') {
             text += item;
@@ -40,11 +62,24 @@ export function persianize(input: string): string {
 
         let conv = numR2P.get(item);
         if (conv !== undefined) {
-            text = conv + text;
+            text += conv;
             continue;
         }
 
-        conv = charR2P.get(item);
+        const item2 = (item + input.charAt(i + 1)).trim();
+        const item3 = (item2 + input.charAt(i + 2)).trim();
+        const item4 = (item3 + input.charAt(i + 3)).trim();
+
+        conv = charR2P.get(item4); step = 4;
+        if (conv === undefined) {
+            conv = charR2P.get(item3); step = 3;
+        }
+        if (conv === undefined) {
+            conv = charR2P.get(item2); step = 2;
+        }
+        if (conv === undefined) {
+            conv = charR2P.get(item); step = 1;
+        }
         if (conv !== undefined) {
             text += conv;
             continue;
@@ -60,7 +95,9 @@ export function romanize(input: string): string {
         return "";
 
     let text = "";
-    for (let i = input.length - 1; i >= 0; i--) {
+    let step = 1;
+    for (let i = 0; i < input.length; i += step) {
+        step = 1;
         const item = input.charAt(i);
         if (item === ' ' || item === '\r' || item === '\n') {
             text += item;
@@ -69,11 +106,24 @@ export function romanize(input: string): string {
 
         let conv = numP2R.get(item);
         if (conv !== undefined) {
-            text = conv + text;
+            text += conv;
             continue;
         }
 
-        conv = charP2R.get(item);
+        const item2 = (item + input.charAt(i + 1)).trim();
+        const item3 = (item2 + input.charAt(i + 2)).trim();
+        const item4 = (item3 + input.charAt(i + 3)).trim();
+
+        conv = charP2R.get(item4); step = 4;
+        if (conv === undefined) {
+            conv = charP2R.get(item3); step = 3;
+        }
+        if (conv === undefined) {
+            conv = charP2R.get(item2); step = 2;
+        }
+        if (conv === undefined) {
+            conv = charP2R.get(item); step = 1;
+        }
         if (conv !== undefined) {
             text += conv;
             continue;
