@@ -145,10 +145,13 @@ describe("testing letters", () => {
     test("check words roman", () => {
         is(romanize("سلام"), "salam");
         is(romanize("سلام", true), "Salam");
+        is(romanize("اب"), "ab");
+        is(romanize("سگ"), "sag");
 
         is(romanize("تهران"), "tehran");
         is(romanize("مشهد"), "mashhad");
         is(romanize("ایران"), "iran");
+        is(romanize("افغانستان"), "afghanestan");
         is(romanize("اسلامی"), "eslamiye");
         is(romanize("جمهوری"), "jomhuriye");
         is(romanize("بزرگ"), "bozorg");
@@ -159,10 +162,13 @@ describe("testing letters", () => {
     test("check words persian", () => {
         is(persianize("salam"), "سلام");
         is(persianize("Salam"), "سلام");
+        is(persianize("ab"), "اب");
+        is(persianize("sag"), "سگ");
 
         is(persianize("tehran"), "تهران");
         is(persianize("mashhad"), "مشهد");
         is(persianize("iran"), "ایران");
+        is(persianize("afghanestan"), "افغانستان");
         is(persianize("eslamiye"), "اسلامی");
         is(persianize("jomhuriye"), "جمهوری");
         is(persianize("bozorg"), "بزرگ");

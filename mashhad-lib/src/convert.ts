@@ -24,7 +24,7 @@ const charP2R = new Map<string, string>([
     ["س", "s"],
     ["ف", "f"],
     ["ک", "k"],
-    ["گ", "ɡ"],
+    ["گ", "g"],
     ["ل", "l"],
     ["م", "m"],
     ["ن", "n"],
@@ -48,6 +48,9 @@ const charP2R = new Map<string, string>([
     ["فی", "fi"],
     ["مو", "mu"],
     ["کو", "kuch"],
+    ["سگ", "sag"],
+    ["غ", "gh"],
+    ["نس", "nes"],
     ["چک", "ak"]
 ]);
 
