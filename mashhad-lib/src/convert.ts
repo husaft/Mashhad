@@ -14,8 +14,11 @@ const numP2R = new Map<string, string>([
 
 const numR2P = swap(numP2R);
 
-const letters = new Map<string, string>([
+const charP2R = new Map<string, string>([
+    [" ", " "]
 ]);
+
+const charR2P = swap(charP2R);
 
 function swap<TK, TV>(input: Map<TK, TV>): Map<TV, TK> {
     const map = new Map<TV, TK>();
@@ -35,10 +38,14 @@ export function persianize(input: string): string {
         let conv = numR2P.get(item);
         if (conv !== undefined) {
             text = conv + text;
-        } else {
-            conv = letters.get(item);
-            text += conv;
+            continue;
         }
+        conv = charR2P.get(item);
+        if (conv !== undefined) {
+            text += conv;
+            continue;
+        }
+        text += "_";
     }
 
     return text;
@@ -55,10 +62,14 @@ export function romanize(input: string): string {
         let conv = numP2R.get(item);
         if (conv !== undefined) {
             text = conv + text;
-        } else {
-            conv = letters.get(item);
-            text += conv;
+            continue;
         }
+        conv = charP2R.get(item);
+        if (conv !== undefined) {
+            text += conv;
+            continue;
+        }
+        text += "_";
     }
 
     return text;
