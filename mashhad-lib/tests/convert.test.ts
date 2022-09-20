@@ -151,6 +151,9 @@ describe("testing letters", () => {
         is(romanize("ایران"), "iran");
         is(romanize("اسلامی"), "eslamiye");
         is(romanize("جمهوری"), "jomhuriye");
+        is(romanize("بزرگ"), "bozorg");
+        is(romanize("فیل"), "fil");
+        is(romanize("کوچک"), "kuchak");
     });
 
     test("check words persian", () => {
@@ -162,16 +165,23 @@ describe("testing letters", () => {
         is(persianize("iran"), "ایران");
         is(persianize("eslamiye"), "اسلامی");
         is(persianize("jomhuriye"), "جمهوری");
+        is(persianize("bozorg"), "بزرگ");
+        is(persianize("fil"), "فیل");
+        is(persianize("kuchak"), "کوچک");
     });
 
     test("check sentences roman", () => {
         is(romanize("جمهوری اسلامی ایران"), "jomhuriye eslamiye iran");
         is(romanize("جمهوری اسلامی ایران", true), "Jomhuriye Eslamiye Iran");
+        is(romanize("فیل بزرگ است"), "fil bozorg ast");
+        is(romanize("موش کوچک است"), "mush kuchak ast");
     });
 
     test("check sentences persian", () => {
         is(persianize("jomhuriye eslamiye iran"), "جمهوری اسلامی ایران");
         is(persianize("Jomhuriye Eslamiye Iran"), "جمهوری اسلامی ایران");
+        is(persianize("fil bozorg ast"), "فیل بزرگ است");
+        is(persianize("mush kuchak ast"), "موش کوچک است");
     });
 
     function is(first: string, second: string): void {
