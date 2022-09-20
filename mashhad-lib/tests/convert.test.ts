@@ -6,12 +6,20 @@ describe("testing letters", () => {
         expect(romanize(undefined)).toBe("");
         expect(romanize(null)).toBe("");
         expect(romanize("")).toBe("");
+
+        expect(romanize("\r")).toBe("\r");
+        expect(romanize("\n")).toBe("\n");
+        expect(romanize(" ")).toBe(" ");
     });
 
     test("check empty persian", () => {
         expect(persianize(undefined)).toBe("");
         expect(persianize(null)).toBe("");
         expect(persianize("")).toBe("");
+
+        expect(persianize("\r")).toBe("\r");
+        expect(persianize("\n")).toBe("\n");
+        expect(persianize(" ")).toBe(" ");
     });
 
     test("check digits roman", () => {

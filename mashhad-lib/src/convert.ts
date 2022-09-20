@@ -15,7 +15,6 @@ const numP2R = new Map<string, string>([
 const numR2P = swap(numP2R);
 
 const charP2R = new Map<string, string>([
-    [" ", " "]
 ]);
 
 const charR2P = swap(charP2R);
@@ -32,22 +31,27 @@ export function persianize(input: string): string {
         return "";
 
     let text = "";
-
     for (let i = input.length - 1; i >= 0; i--) {
         const item = input.charAt(i);
+        if (item === ' ' || item === '\r' || item === '\n') {
+            text += item;
+            continue;
+        }
+
         let conv = numR2P.get(item);
         if (conv !== undefined) {
             text = conv + text;
             continue;
         }
+
         conv = charR2P.get(item);
         if (conv !== undefined) {
             text += conv;
             continue;
         }
+
         text += "_";
     }
-
     return text;
 }
 
@@ -56,21 +60,26 @@ export function romanize(input: string): string {
         return "";
 
     let text = "";
-
     for (let i = input.length - 1; i >= 0; i--) {
         const item = input.charAt(i);
+        if (item === ' ' || item === '\r' || item === '\n') {
+            text += item;
+            continue;
+        }
+
         let conv = numP2R.get(item);
         if (conv !== undefined) {
             text = conv + text;
             continue;
         }
+
         conv = charP2R.get(item);
         if (conv !== undefined) {
             text += conv;
             continue;
         }
+
         text += "_";
     }
-
     return text;
 }
