@@ -142,6 +142,22 @@ describe("testing letters", () => {
         expect(persianize("1000000")).toBe("۱۰۰۰۰۰۰");
     });
 
+    test("check letters roman", () => {
+        is(romanize("ا"), "a");
+        is(romanize("ب"), "b");
+        is(romanize("ث"), "c");
+        is(romanize("ت"), "t");
+        is(romanize("پ"), "p");
+    });
+
+    test("check letters persian", () => {
+        is(persianize("a"), "ا");
+        is(persianize("b"), "ب");
+        is(persianize("c"), "ث");
+        is(persianize("t"), "ت");
+        is(persianize("p"), "پ");
+    });
+
     test("check words roman", () => {
         is(romanize("سلام"), "salam");
         is(romanize("سلام", true), "Salam");

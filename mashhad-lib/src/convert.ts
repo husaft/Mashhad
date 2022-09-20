@@ -16,6 +16,7 @@ const numR2P = swap(numP2R);
 
 const charP2R = new Map<string, string>([
     ["ب", "b"],
+    ["ث", "c"],
     ["پ", "p"],
     ["ت", "t"],
     ["د", "d"],
