@@ -160,6 +160,13 @@ describe("testing letters", () => {
         is(persianize("jomhuriye"), "جمهوری");
     });
 
+    test("check sentences roman", () => {
+        is(romanize("جمهوری اسلامی ایران"), "jomhuriye eslamiye iran");
+    });
+
+    test("check sentences persian", () => {
+        is(persianize("jomhuriye eslamiye iran"), "جمهوری اسلامی ایران");
+    });
 
     function is(first: string, second: string): void {
         expect(Array.from(first).toString()).toBe(Array.from(second).toString());

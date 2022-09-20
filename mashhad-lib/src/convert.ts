@@ -73,9 +73,9 @@ export function persianize(input: string): string {
             continue;
         }
 
-        const item2 = (item + input.charAt(i + 1)).trim();
-        const item3 = (item2 + input.charAt(i + 2)).trim();
-        const item4 = (item3 + input.charAt(i + 3)).trim();
+        const item2 = (item + input.charAt(i + 1));
+        const item3 = (item2 + input.charAt(i + 2));
+        const item4 = (item3 + input.charAt(i + 3));
 
         conv = charR2P.get(item4); step = 4;
         if (conv === undefined) {
@@ -117,9 +117,9 @@ export function romanize(input: string): string {
             continue;
         }
 
-        const item2 = (item + input.charAt(i + 1)).trim();
-        const item3 = (item2 + input.charAt(i + 2)).trim();
-        const item4 = (item3 + input.charAt(i + 3)).trim();
+        const item2 = (item + input.charAt(i + 1));
+        const item3 = (item2 + input.charAt(i + 2));
+        const item4 = (item3 + input.charAt(i + 3));
 
         conv = charP2R.get(item4); step = 4;
         if (conv === undefined) {
