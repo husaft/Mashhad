@@ -7,6 +7,7 @@ describe("testing letters", () => {
         expect(romanize(null)).toBe("");
         expect(romanize("")).toBe("");
 
+        expect(romanize("\t")).toBe("\t");
         expect(romanize("\r")).toBe("\r");
         expect(romanize("\n")).toBe("\n");
         expect(romanize(" ")).toBe(" ");
@@ -17,6 +18,7 @@ describe("testing letters", () => {
         expect(persianize(null)).toBe("");
         expect(persianize("")).toBe("");
 
+        expect(persianize("\t")).toBe("\t");
         expect(persianize("\r")).toBe("\r");
         expect(persianize("\n")).toBe("\n");
         expect(persianize(" ")).toBe(" ");
@@ -159,6 +161,7 @@ describe("testing letters", () => {
     });
 
     test("check words roman", () => {
+        is(romanize("پدر"), "pedar");
         is(romanize("سلام"), "salam");
         is(romanize("سلام", true), "Salam");
         is(romanize("اب"), "ab");
@@ -176,6 +179,7 @@ describe("testing letters", () => {
     });
 
     test("check words persian", () => {
+        is(persianize("pedar"), "پدر");
         is(persianize("salam"), "سلام");
         is(persianize("Salam"), "سلام");
         is(persianize("ab"), "اب");
