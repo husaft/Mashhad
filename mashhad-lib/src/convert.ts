@@ -15,44 +15,46 @@ const numP2R = new Map<string, string>([
 const numR2P = swap(numP2R);
 
 const charP2R = new Map<string, string>([
+    ["ا", "a"],
     ["ب", "b"],
-    ["ث", "c"],
-    ["پ", "p"],
     ["ت", "t"],
+    ["ث", "c"],
     ["د", "d"],
     ["ر", "r"],
     ["ز", "z"],
     ["س", "s"],
+    ["ش", "sh"],
+    ["غ", "gh"],
     ["ف", "f"],
-    ["ک", "k"],
-    ["گ", "g"],
     ["ل", "l"],
     ["م", "m"],
     ["ن", "n"],
-    ["ا", "a"],
-    ["سل", "sal"],
     ["ه", "h"],
-    ["ش", "sh"],
-    ["هد", "had"],
-    ["مش", "mash"],
-    ["ته", "teh"],
+    ["پ", "p"],
+    ["ک", "k"],
+    ["گ", "g"],
     ["ی", "ye"],
-    ["می", "miye"],
     ["اس", "es"],
-    ["ای", "i"],
-    ["جم", "jom"],
-    ["هو", "hur"],
-    ["ری", "iye"],
-    ["است", "ast"],
-    ["بز", "boz"],
-    ["رگ", "org"],
+    ["ایر", "ir|a"],
+    ["ب|ز", "bo|z"],
+    ["ت|ه", "te|h"],
+    ["ج|م", "jo|m"],
+    ["د|ر", "da|r"],
+    ["ر|گ", "or|g"],
+    ["ر|ی", "ri|ye"],
+    ["س|ل", "sa|l"],
+    ["س|گ", "sa|g"],
     ["فی", "fi"],
+    ["م|ش", "ma|sh"],
     ["مو", "mu"],
-    ["کو", "kuch"],
-    ["سگ", "sag"],
-    ["غ", "gh"],
-    ["نس", "nes"],
-    ["چک", "ak"]
+    ["م|ی", "mi|ye"],
+    ["ن|س", "ne|s"],
+    ["ه|د", "ha|d"],
+    ["هو", "hu"],
+    ["پ|د", "pe|d"],
+    ["چ|ک", "cha|k"],
+    ["کو", "ku"],
+    ["است", "ast"]
 ]);
 
 const charR2P = swap(charP2R);
@@ -64,87 +66,76 @@ function swap<TK, TV>(input: Map<TK, TV>): Map<TV, TK> {
     return map;
 }
 
-export function persianize(raw: string): string {
-    if (raw === undefined || raw === null)
-        return "";
+function isWhiteSpace(txt: string) {
+    return /^\s*$/.test(txt);
+}
 
-    const input = raw.toLowerCase();
-    let text = "";
-    let step = 1;
-    for (let i = 0; i < input.length; i += step) {
-        step = 1;
-        const item = input.charAt(i);
-        if (item === ' ' || item === '\r' || item === '\n') {
-            text += item;
-            continue;
-        }
-
-        let conv = numR2P.get(item);
-        if (conv !== undefined) {
-            text += conv;
-            continue;
-        }
-
-        const item2 = (item + input.charAt(i + 1));
-        const item3 = (item2 + input.charAt(i + 2));
-        const item4 = (item3 + input.charAt(i + 3));
-
-        conv = charR2P.get(item4); step = 4;
-        if (conv === undefined) {
-            conv = charR2P.get(item3); step = 3;
-        }
-        if (conv === undefined) {
-            conv = charR2P.get(item2); step = 2;
-        }
-        if (conv === undefined) {
-            conv = charR2P.get(item); step = 1;
-        }
-        if (conv !== undefined) {
-            text += conv;
-            continue;
-        }
-
-        text += "_";
-    }
-    return text;
+export function persianize(input: string): string {
+    return convert(input, false, true, numR2P, charR2P);
 }
 
 export function romanize(input: string, upper: boolean = false): string {
-    if (input === undefined || input === null)
+    return convert(input, upper, false, numP2R, charP2R);
+}
+
+function convert(raw: string, upper: boolean, lower: boolean,
+    numbers: Map<string, string>, letters: Map<string, string>): string {
+
+    if (raw === undefined || raw === null) {
         return "";
+    }
+
+    const input = lower ? raw.toLowerCase() : raw;
 
     let text = "";
     let step = 1;
     for (let i = 0; i < input.length; i += step) {
         step = 1;
-        const item = input.charAt(i);
-        if (item === ' ' || item === '\r' || item === '\n') {
-            text += item;
+        const item0 = input.charAt(i);
+        if (isWhiteSpace(item0)) {
+            text += item0;
             continue;
         }
 
-        let conv = numP2R.get(item);
+        let conv = numbers.get(item0);
         if (conv !== undefined) {
             text += conv;
             continue;
         }
 
-        const item2 = (item + input.charAt(i + 1));
-        const item3 = (item2 + input.charAt(i + 2));
-        const item4 = (item3 + input.charAt(i + 3));
+        const item1 = (i + 1) < input.length ? (input.charAt(i + 1)) : null;
+        const item2 = (i + 2) < input.length ? (input.charAt(i + 2)) : null;
+        const item3 = (i + 3) < input.length ? (input.charAt(i + 3)) : null;
 
-        conv = charP2R.get(item4); step = 4;
+        conv = letters.get(`${item0}${item1}|${item2}${item3}`); step = 2;
+
         if (conv === undefined) {
-            conv = charP2R.get(item3); step = 3;
+            conv = letters.get(`${item0}${item1}${item2}|${item3}`); step = 3;
         }
+
         if (conv === undefined) {
-            conv = charP2R.get(item2); step = 2;
+            conv = letters.get(`${item0}${item1}|${item2}`); step = 2;
         }
+
         if (conv === undefined) {
-            conv = charP2R.get(item); step = 1;
+            conv = letters.get(`${item0}${item1}${item2}`); step = 3;
         }
+
+        if (conv === undefined) {
+            conv = letters.get(`${item0}|${item1}`); step = 1;
+        }
+
+        if (conv === undefined) {
+            conv = letters.get(`${item0}${item1}`); step = 2;
+        }
+
+        if (conv === undefined) {
+            conv = letters.get(item0); step = 1;
+        }
+
         if (conv !== undefined) {
-            if (upper && (text.length === 0 || text.charAt(text.length - 1) === ' ')) {
+            conv = conv.split('|')[0];
+            if (upper && (text.length === 0 || isWhiteSpace(text.charAt(text.length - 1)))) {
                 conv = conv.toUpperCase().charAt(0) + conv.substring(1);
             }
             text += conv;
