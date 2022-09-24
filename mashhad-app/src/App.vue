@@ -6,75 +6,75 @@
                 <table class="table keyboard">
                     <tbody>
                         <tr>
-                            <td id="k001" class="key_white">^</td>
-                            <td id="k002" class="key_white">1</td>
-                            <td id="k003" class="key_white">2</td>
-                            <td id="k004" class="key_white">3</td>
-                            <td id="k005" class="key_white">4</td>
-                            <td id="k006" class="key_white">5</td>
-                            <td id="k007" class="key_white">6</td>
-                            <td id="k008" class="key_white">7</td>
-                            <td id="k009" class="key_white">8</td>
-                            <td id="k010" class="key_white">9</td>
-                            <td id="k011" class="key_white">0</td>
-                            <td id="k012" class="key_white">ß</td>
-                            <td id="k013" class="key_white">`</td>
-                            <td id="k014" class="key_gray">←</td>
+                            <td @click="onKeyPush" id="k001" class="key_white">{{l.get("k001")}}</td>
+                            <td @click="onKeyPush" id="k002" class="key_white">{{l.get("k002")}}</td>
+                            <td @click="onKeyPush" id="k003" class="key_white">{{l.get("k003")}}</td>
+                            <td @click="onKeyPush" id="k004" class="key_white">{{l.get("k004")}}</td>
+                            <td @click="onKeyPush" id="k005" class="key_white">{{l.get("k005")}}</td>
+                            <td @click="onKeyPush" id="k006" class="key_white">{{l.get("k006")}}</td>
+                            <td @click="onKeyPush" id="k007" class="key_white">{{l.get("k007")}}</td>
+                            <td @click="onKeyPush" id="k008" class="key_white">{{l.get("k008")}}</td>
+                            <td @click="onKeyPush" id="k009" class="key_white">{{l.get("k009")}}</td>
+                            <td @click="onKeyPush" id="k010" class="key_white">{{l.get("k010")}}</td>
+                            <td @click="onKeyPush" id="k011" class="key_white">{{l.get("k011")}}</td>
+                            <td @click="onKeyPush" id="k012" class="key_white">{{l.get("k012")}}</td>
+                            <td @click="onKeyPush" id="k013" class="key_white">{{l.get("k013")}}</td>
+                            <td @click="onKeyPush" id="k014" class="key_gray">{{l.get("k014")}}</td>
                         </tr>
                         <tr>
-                            <td id="k021" class="key_gray">⇆</td>
-                            <td id="k022" class="key_white">Q</td>
-                            <td id="k023" class="key_white">W</td>
-                            <td id="k024" class="key_white">E</td>
-                            <td id="k025" class="key_white">R</td>
-                            <td id="k026" class="key_white">T</td>
-                            <td id="k027" class="key_white">Z</td>
-                            <td id="k028" class="key_white">U</td>
-                            <td id="k029" class="key_white">I</td>
-                            <td id="k030" class="key_white">O</td>
-                            <td id="k031" class="key_white">P</td>
-                            <td id="k032" class="key_white">Ü</td>
-                            <td id="k033" class="key_white">*</td>
-                            <td id="k034" class="key_gray" rowspan="2"><br/>↵</td>
+                            <td @click="onKeyPush" id="k021" class="key_gray">{{l.get("k021")}}</td>
+                            <td @click="onKeyPush" id="k022" class="key_white">{{l.get("k022")}}</td>
+                            <td @click="onKeyPush" id="k023" class="key_white">{{l.get("k023")}}</td>
+                            <td @click="onKeyPush" id="k024" class="key_white">{{l.get("k024")}}</td>
+                            <td @click="onKeyPush" id="k025" class="key_white">{{l.get("k025")}}</td>
+                            <td @click="onKeyPush" id="k026" class="key_white">{{l.get("k026")}}</td>
+                            <td @click="onKeyPush" id="k027" class="key_white">{{l.get("k027")}}</td>
+                            <td @click="onKeyPush" id="k028" class="key_white">{{l.get("k028")}}</td>
+                            <td @click="onKeyPush" id="k029" class="key_white">{{l.get("k029")}}</td>
+                            <td @click="onKeyPush" id="k030" class="key_white">{{l.get("k030")}}</td>
+                            <td @click="onKeyPush" id="k031" class="key_white">{{l.get("k031")}}</td>
+                            <td @click="onKeyPush" id="k032" class="key_white">{{l.get("k032")}}</td>
+                            <td @click="onKeyPush" id="k033" class="key_white">{{l.get("k033")}}</td>
+                            <td @click="onKeyPush" id="k034" class="key_gray" rowspan="2"><br/>{{l.get("k034")}}</td>
                         </tr>
                         <tr>
-                            <td id="k041" class="key_gray">⇩</td>
-                            <td id="k042" class="key_white">A</td>
-                            <td id="k043" class="key_white">S</td>
-                            <td id="k044" class="key_white">D</td>
-                            <td id="k045" class="key_white">F</td>
-                            <td id="k046" class="key_white">G</td>
-                            <td id="k047" class="key_white">H</td>
-                            <td id="k048" class="key_white">J</td>
-                            <td id="k049" class="key_white">K</td>
-                            <td id="k050" class="key_white">L</td>
-                            <td id="k051" class="key_white">Ö</td>
-                            <td id="k052" class="key_white">Ä</td>
-                            <td id="k053" class="key_white">#</td>
+                            <td @click="onKeyPush" id="k041" class="key_gray">{{l.get("k041")}}</td>
+                            <td @click="onKeyPush" id="k042" class="key_white">{{l.get("k042")}}</td>
+                            <td @click="onKeyPush" id="k043" class="key_white">{{l.get("k043")}}</td>
+                            <td @click="onKeyPush" id="k044" class="key_white">{{l.get("k044")}}</td>
+                            <td @click="onKeyPush" id="k045" class="key_white">{{l.get("k045")}}</td>
+                            <td @click="onKeyPush" id="k046" class="key_white">{{l.get("k046")}}</td>
+                            <td @click="onKeyPush" id="k047" class="key_white">{{l.get("k047")}}</td>
+                            <td @click="onKeyPush" id="k048" class="key_white">{{l.get("k048")}}</td>
+                            <td @click="onKeyPush" id="k049" class="key_white">{{l.get("k049")}}</td>
+                            <td @click="onKeyPush" id="k050" class="key_white">{{l.get("k050")}}</td>
+                            <td @click="onKeyPush" id="k051" class="key_white">{{l.get("k051")}}</td>
+                            <td @click="onKeyPush" id="k052" class="key_white">{{l.get("k052")}}</td>
+                            <td @click="onKeyPush" id="k053" class="key_white">{{l.get("k053")}}</td>
                         </tr>
                         <tr>
-                            <td id="k061" class="key_gray">⇧</td>
-                            <td id="k062" class="key_white">&lt;</td>
-                            <td id="k063" class="key_white">Y</td>
-                            <td id="k064" class="key_white">X</td>
-                            <td id="k065" class="key_white">C</td>
-                            <td id="k066" class="key_white">V</td>
-                            <td id="k067" class="key_white">B</td>
-                            <td id="k068" class="key_white">N</td>
-                            <td id="k069" class="key_white">M</td>
-                            <td id="k070" class="key_white">;</td>
-                            <td id="k071" class="key_white">:</td>
-                            <td id="k072" class="key_white">-</td>
-                            <td id="k073" class="key_gray" colspan="2">⇧</td>
+                            <td @click="onKeyPush" id="k061" class="key_gray">{{l.get("k061")}}</td>
+                            <td @click="onKeyPush" id="k062" class="key_white">{{l.get("k062")}}</td>
+                            <td @click="onKeyPush" id="k063" class="key_white">{{l.get("k063")}}</td>
+                            <td @click="onKeyPush" id="k064" class="key_white">{{l.get("k064")}}</td>
+                            <td @click="onKeyPush" id="k065" class="key_white">{{l.get("k065")}}</td>
+                            <td @click="onKeyPush" id="k066" class="key_white">{{l.get("k066")}}</td>
+                            <td @click="onKeyPush" id="k067" class="key_white">{{l.get("k067")}}</td>
+                            <td @click="onKeyPush" id="k068" class="key_white">{{l.get("k068")}}</td>
+                            <td @click="onKeyPush" id="k069" class="key_white">{{l.get("k069")}}</td>
+                            <td @click="onKeyPush" id="k070" class="key_white">{{l.get("k070")}}</td>
+                            <td @click="onKeyPush" id="k071" class="key_white">{{l.get("k071")}}</td>
+                            <td @click="onKeyPush" id="k072" class="key_white">{{l.get("k072")}}</td>
+                            <td @click="onKeyPush" id="k073" class="key_gray" colspan="2">{{l.get("k073")}}</td>
                         </tr>
                         <tr>
-                            <td id="k081" class="key_gray">⎈</td>
-                            <td id="k082" class="key_gray"></td>
-                            <td id="k083" class="key_gray">⎇</td>
-                            <td id="k084" class="key_white" colspan="7"></td>
-                            <td id="k085" class="key_gray">⎇</td>
-                            <td id="k086" class="key_gray" colspan="2"></td>
-                            <td id="k087" class="key_gray">⎈</td>
+                            <td @click="onKeyPush" id="k081" class="key_gray">{{l.get("k081")}}</td>
+                            <td @click="onKeyPush" id="k082" class="key_gray">{{l.get("k082")}}</td>
+                            <td @click="onKeyPush" id="k083" class="key_gray">{{l.get("k083")}}</td>
+                            <td @click="onKeyPush" id="k084" class="key_white" colspan="7">{{l.get("k084")}}</td>
+                            <td @click="onKeyPush" id="k085" class="key_gray">{{l.get("k085")}}</td>
+                            <td @click="onKeyPush" id="k086" class="key_gray" colspan="2">{{l.get("k086")}}</td>
+                            <td @click="onKeyPush" id="k087" class="key_gray">{{l.get("k087")}}</td>
                         </tr>
                     </tbody>
                 </table>
