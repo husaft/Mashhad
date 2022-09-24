@@ -105,6 +105,30 @@ import { persianize, romanize } from "../../mashhad-lib/src/convert"
 
 @Component({})
 export default class App extends Vue {
+    private l: Map<string, string> = new Map<string, string>([
+        ["k001","^"], ["k002","1"], ["k003","2"], ["k004","3"], ["k005","4"], 
+        ["k006","5"], ["k007","6"], ["k008","7"], ["k009","8"], ["k010","9"], 
+        ["k011","0"], ["k012","ß"], ["k013","`"], ["k014","←"], ["k021","⇆"], 
+        ["k022","Q"], ["k023","W"], ["k024","E"], ["k025","R"], ["k026","T"], 
+        ["k027","Z"], ["k028","U"], ["k029","I"], ["k030","O"], ["k031","P"], 
+        ["k032","Ü"], ["k033","*"], ["k034","↵"], ["k041","⇩"], ["k042","A"], 
+        ["k043","S"], ["k044","D"], ["k045","F"], ["k046","G"], ["k047","H"], 
+        ["k048","J"], ["k049","K"], ["k050","L"], ["k051","Ö"], ["k052","Ä"], 
+        ["k053","#"], ["k061","⇧"], ["k062","<"], ["k063","Y"], ["k064","X"], 
+        ["k065","C"], ["k066","V"], ["k067","B"], ["k068","N"], ["k069","M"], 
+        ["k070",";"], ["k071",":"], ["k072","-"], ["k073","⇧"], ["k081","⎈"], 
+        ["k083","⎇"], ["k084"," "], ["k085","⎇"], ["k087","⎈"]
+    ]);
+
+    private onKeyPush(me: any): void {
+        const keyId = me.target.id;
+        const keyVal = this.l.get(keyId);
+        if (keyVal === undefined)
+            return;
+
+        document.title = (' Key press! '+keyId+" = "+keyVal); // TODO
+    }
+
     private romanTxt: string = '';
     private farsiTxt: string = '';
 
