@@ -3,6 +3,11 @@
     <b-card>
         <b-tabs content-class="mt-3">
             <b-tab title="Input tools">
+                <b-form-textarea id="ta_keys" 
+                    rows="1" max-rows="6" 
+                    v-model="keysTxt" 
+                    placeholder="Press some keys"></b-form-textarea>
+                <br />
                 <table class="table keyboard">
                     <tbody>
                         <tr>
@@ -105,7 +110,8 @@ import { persianize, romanize } from "../../mashhad-lib/src/convert";
 
 @Component({})
 export default class App extends Vue {
-    private l: Map<string, string> = new Map<string, string>([
+
+    private fa: Map<string, string> = new Map<string, string>([
         ["k001","پ"], ["k002","۱"], ["k003","۲"], ["k004","۳"], ["k005","۴"], 
         ["k006","۵"], ["k007","۶"], ["k008","۷"], ["k009","۸"], ["k010","۹"], 
         ["k011","۰"], ["k012","-"], ["k013","="], ["k014","←"], ["k021","⇆"], 
@@ -134,6 +140,9 @@ export default class App extends Vue {
         ["k070",";"], ["k071",":"], ["k072","-"], ["k073","⇧"], ["k081","⎈"], 
         ["k083","⎇"], ["k084"," "], ["k085","⎇"], ["k087","⎈"]
     ]);
+
+    private l: Map<string, string> = this.fa;
+    private keysTxt: string = '';
 
     private onKeyPush(me: any): void {
         const keyId = me.target.id;
