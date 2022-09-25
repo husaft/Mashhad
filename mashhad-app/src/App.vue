@@ -146,11 +146,37 @@ export default class App extends Vue {
 
     private onKeyPush(me: any): void {
         const keyId = me.target.id;
-        const keyVal = this.l.get(keyId);
-        if (keyVal === undefined)
+        let keyVal = this.l.get(keyId);
+        if (keyVal === undefined) {
             return;
-
-        document.title = (' Key press! '+keyId+" = "+keyVal); // TODO
+        }
+        if (keyVal === '⎈') {
+            // TODO
+            return;
+        }
+        if (keyVal === '⎇') {
+            // TODO
+            return;
+        }
+        if (keyVal === '⇩') {
+            // TODO
+            return;
+        }
+        if (keyVal === '⇧') {
+            // TODO
+            return;
+        }
+        if (keyVal === "←") {
+            this.keysTxt = this.keysTxt.substring(0, this.keysTxt.length-1);
+            return;
+        }
+        if (keyVal === '↵') {
+            keyVal = '\n';
+        }
+        if (keyVal === "⇆") {
+            keyVal = '\t';
+        }
+        this.keysTxt += keyVal;
     }
 
     private romanTxt: string = '';
@@ -172,6 +198,10 @@ export default class App extends Vue {
 }
 
 #ta_farsi { 
+    font-size: 180%;
+}
+
+#ta_keys {
     font-size: 180%;
 }
 
