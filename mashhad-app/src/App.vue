@@ -7,7 +7,7 @@
                     rows="1" max-rows="6" 
                     v-model="keysTxt" 
                     placeholder="Press some keys"></b-form-textarea>
-                <br />
+
                 <table class="table keyboard">
                     <tbody>
                         <tr>
