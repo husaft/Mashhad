@@ -101,7 +101,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { persianize, romanize } from "../../mashhad-lib/src/convert"
+import { persianize, romanize } from "../../mashhad-lib/src/convert";
 
 @Component({})
 export default class App extends Vue {
