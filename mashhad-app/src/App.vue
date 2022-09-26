@@ -129,6 +129,24 @@ import { persianize, romanize } from "../../mashhad-lib/src/convert";
 @Component({ components: { } })
 export default class App extends Vue {
 
+    private static getTimeZones() {
+        const data = [
+            { place: ["United","States"], zone: "America/New_York" },
+            { place: ["Deutsch-","land"], zone: "Europe/Berlin" },
+            { place: ["ایران"],           zone: "Asia/Tehran" },
+            { place: ["افغانستان"],       zone: "Asia/Kabul" }
+        ];
+        return data;
+    }
+
+    private static getTimeOpts(zone: string) {
+        const opt : Intl.DateTimeFormatOptions = {
+            day: "2-digit", month: "short", year: "numeric",
+            hour12: false, hour: "numeric", minute: "2-digit",
+            timeZone: zone
+        };
+        return opt;
+    }
     private fa_bn: Map<string, string> = new Map<string, string>([
         ["k001","÷"], ["k002","!"], ["k003","´"], ["k004","ر"], ["k005","؋"], 
         ["k006","%"], ["k007","×"], ["k008","⸲"], ["k009","*"], ["k010",")"],
