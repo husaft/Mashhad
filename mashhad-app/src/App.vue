@@ -218,12 +218,12 @@ export default class App extends Vue {
         ["k083","⎇"], ["k084"," "], ["k085","⎇"], ["k087","⎈"], ["k086","🇩🇪"]
     ]);
 
-    private l: Map<string, string> = new Map<string, string>();
-    private keysTxt: string = '';
+    public l: Map<string, string> = new Map<string, string>();
+    public keysTxt: string = '';
     private isFarsi: boolean = true;
-    private isShiftOnce: boolean = false;
-    private isShift: boolean = false;
-    private isAlt: boolean = false;
+    public isShiftOnce: boolean = false;
+    public isShift: boolean = false;
+    public isAlt: boolean = false;
 
     private getLayout(): Map<string, string> {
         if (this.isFarsi) {
@@ -298,8 +298,8 @@ export default class App extends Vue {
         this.keysTxt += keyVal;
     }
 
-    private romanTxt: string = '';
-    private farsiTxt: string = '';
+    public romanTxt: string = '';
+    public farsiTxt: string = '';
 
     public onRoman(): void {
         this.farsiTxt = persianize(this.romanTxt);
