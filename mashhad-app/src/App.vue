@@ -218,8 +218,33 @@ export default class App extends Vue {
         ["k083","⎇"], ["k084"," "], ["k085","⎇"], ["k087","⎈"], ["k086","🇩🇪"]
     ]);
 
-    private l: Map<string, string> = this.fa_la;
+    private l: Map<string, string> = new Map<string, string>();
     private keysTxt: string = '';
+    private isFarsi: boolean = true;
+    private isShiftOnce: boolean = false;
+    private isShift: boolean = false;
+    private isAlt: boolean = false;
+
+    private getLayout(): Map<string, string> {
+        if (this.isFarsi) {
+            if (this.isShift || this.isShiftOnce) {
+                return this.isAlt ? this.fa_ba : this.fa_bn;
+            }
+            return this.isAlt ? this.fa_la : this.fa_ln;
+        }
+        if (this.isShift || this.isShiftOnce) {
+            return this.isAlt ? this.de_ba : this.de_bn;
+        }
+        return this.isAlt ? this.de_la : this.de_ln;
+    }
+
+    private switchLayout() {
+        this.l = this.getLayout();
+    }
+
+    mounted() {
+        this.switchLayout();
+    }
 
     private onKeyPush(me: any): void {
         const keyId = me.target.id;
