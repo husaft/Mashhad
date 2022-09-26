@@ -2,6 +2,27 @@
   <div id="app">
     <b-card>
         <b-tabs content-class="mt-3">
+            <b-tab title="Calendar">
+                <b-calendar block v-model="currentSelDate" 
+                            class="border rounded p-2" 
+                            @input="refreshDateTxt" 
+                            value-as-date>
+                </b-calendar>
+                <center>
+                    <b-button size="sm" variant="outline-primary"
+                            class="ml-auto" @click="setToday">
+                        Set today
+                    </b-button>
+                    <br/>
+                    <br/>
+                    <b-list-group>
+                        <b-list-group-item>{{ currentSelDTxt[0] }}</b-list-group-item>
+                        <b-list-group-item>{{ currentSelDTxt[1] }}</b-list-group-item>
+                        <b-list-group-item>{{ currentSelDTxt[2] }}</b-list-group-item>
+                        <b-list-group-item>{{ currentSelDTxt[3] }}</b-list-group-item>
+                    </b-list-group>
+                </center>
+            </b-tab>
             <b-tab title="World clock">
                 <b-list-group>
                     <b-list-group-item>
