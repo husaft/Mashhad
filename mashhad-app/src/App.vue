@@ -43,7 +43,7 @@
                             <td @click="onKeyPush" id="k034" class="key_gray" rowspan="2"><br/>{{l.get("k034")}}</td>
                         </tr>
                         <tr>
-                            <td @click="onKeyPush" id="k041" class="key_gray">{{l.get("k041")}}</td>
+                            <td @click="onKeyPush" id="k041" :class="{ key_gray_on: isShift, key_gray: !isShift }">{{l.get("k041")}}</td>
                             <td @click="onKeyPush" id="k042" class="key_white">{{l.get("k042")}}</td>
                             <td @click="onKeyPush" id="k043" class="key_white">{{l.get("k043")}}</td>
                             <td @click="onKeyPush" id="k044" class="key_white">{{l.get("k044")}}</td>
@@ -58,7 +58,7 @@
                             <td @click="onKeyPush" id="k053" class="key_white">{{l.get("k053")}}</td>
                         </tr>
                         <tr>
-                            <td @click="onKeyPush" id="k061" class="key_gray">{{l.get("k061")}}</td>
+                            <td @click="onKeyPush" id="k061" :class="{ key_gray_on: isShiftOnce, key_gray: !isShiftOnce }">{{l.get("k061")}}</td>
                             <td @click="onKeyPush" id="k062" class="key_white">{{l.get("k062")}}</td>
                             <td @click="onKeyPush" id="k063" class="key_white">{{l.get("k063")}}</td>
                             <td @click="onKeyPush" id="k064" class="key_white">{{l.get("k064")}}</td>
@@ -70,14 +70,14 @@
                             <td @click="onKeyPush" id="k070" class="key_white">{{l.get("k070")}}</td>
                             <td @click="onKeyPush" id="k071" class="key_white">{{l.get("k071")}}</td>
                             <td @click="onKeyPush" id="k072" class="key_white">{{l.get("k072")}}</td>
-                            <td @click="onKeyPush" id="k073" class="key_gray" colspan="2">{{l.get("k073")}}</td>
+                            <td @click="onKeyPush" id="k073" :class="{ key_gray_on: isShiftOnce, key_gray: !isShiftOnce }" colspan="2">{{l.get("k073")}}</td>
                         </tr>
                         <tr>
                             <td @click="onKeyPush" id="k081" class="key_gray">{{l.get("k081")}}</td>
                             <td @click="onKeyPush" id="k082" class="key_gray">{{l.get("k082")}}</td>
-                            <td @click="onKeyPush" id="k083" class="key_gray">{{l.get("k083")}}</td>
+                            <td @click="onKeyPush" id="k083" :class="{ key_gray_on: isAlt, key_gray: !isAlt }">{{l.get("k083")}}</td>
                             <td @click="onKeyPush" id="k084" class="key_white" colspan="7">{{l.get("k084")}}</td>
-                            <td @click="onKeyPush" id="k085" class="key_gray">{{l.get("k085")}}</td>
+                            <td @click="onKeyPush" id="k085" :class="{ key_gray_on: isAlt, key_gray: !isAlt }">{{l.get("k085")}}</td>
                             <td @click="onKeyPush" id="k086" class="key_gray" colspan="2">{{l.get("k086")}}</td>
                             <td @click="onKeyPush" id="k087" class="key_gray">{{l.get("k087")}}</td>
                         </tr>
@@ -123,7 +123,7 @@ export default class App extends Vue {
         ["k053","|"], ["k061","⇧"], ["k062",">"], ["k063","ك"], ["k064","◌ٓ"], 
         ["k065",'\\'], ["k066","◌ٰ"], ["k067","???"], ["k068","◌ٔ"], ["k069","ء"], 
         ["k070",'>'], ["k071",'<'], ["k072","⸮"], ["k073","⇧"], ["k081","⎈"], 
-        ["k083","⎇"], ["k084"," "], ["k085","⎇"], ["k087","⎈"]
+        ["k083","⎇"], ["k084"," "], ["k085","⎇"], ["k087","⎈"], ["k086","🇦🇫"]
     ]);
 
     private fa_ln: Map<string, string> = new Map<string, string>([
@@ -136,9 +136,9 @@ export default class App extends Vue {
         ["k043","س"], ["k044","ی"], ["k045","ب"], ["k046","ل"], ["k047","ا"], 
         ["k048","ت"], ["k049","ن"], ["k050","م"], ["k051","ک"], ["k052","گ"], 
         ["k062","<"], ["k063","ظ"], ["k064","ط"], ["k065","ز"], ["k066","ر"], 
-        ["k067","ذ"], ["k068","د"], ["k070","و"], ["k081","⎈"], 
-        ["k083","⎇"], ["k084"," "], ["k085","⎇"], ["k087","⎈"], ["k071","."], 
-        ["k072", "/"], ["k069","ئ"], ["k073","⇧"], ["k041","⇩"], ["k061","⇧"]
+        ["k067","ذ"], ["k068","د"], ["k070","و"], ["k081","⎈"], ["k083","⎇"], 
+        ["k084"," "], ["k085","⎇"], ["k087","⎈"], ["k071","."], ["k072", "/"], 
+        ["k069","ئ"], ["k073","⇧"], ["k041","⇩"], ["k061","⇧"], ["k086","🇦🇫"]
     ]);
 
     private fa_la: Map<string, string> = new Map<string, string>([
@@ -153,7 +153,7 @@ export default class App extends Vue {
         ["k053","?"], ["k061","⇧"], ["k062","|"], ["k063","ے"], ["k064","ڑ"], 
         ["k065","ږ"], ["k066","ړ"], ["k067","ڈ"], ["k068","ډ"], ["k069","ٹ"], 
         ["k070",","], ["k071","ۇ"], ["k072","ۉ"], ["k073","⇧"], ["k081","⎈"], 
-        ["k083","⎇"], ["k084"," "], ["k085","⎇"], ["k087","⎈"]
+        ["k083","⎇"], ["k084"," "], ["k085","⎇"], ["k087","⎈"], ["k086","🇦🇫"]
     ]);
 
     private fa_ba: Map<string, string> = this.fa_la;
@@ -170,7 +170,7 @@ export default class App extends Vue {
         ["k053","'"], ["k061","⇧"], ["k062",">"], ["k063","Y"], ["k064","X"], 
         ["k065","C"], ["k066","V"], ["k067","B"], ["k068","N"], ["k069","M"], 
         ["k070",";"], ["k071",":"], ["k072","_"], ["k073","⇧"], ["k081","⎈"], 
-        ["k083","⎇"], ["k084"," "], ["k085","⎇"], ["k087","⎈"]
+        ["k083","⎇"], ["k084"," "], ["k085","⎇"], ["k087","⎈"], ["k086","🇩🇪"]
     ]);
 
     private de_ln: Map<string, string> = new Map<string, string>([
@@ -185,7 +185,7 @@ export default class App extends Vue {
         ["k053","#"], ["k061","⇧"], ["k062","<"], ["k063","y"], ["k064","x"], 
         ["k065","c"], ["k066","v"], ["k067","b"], ["k068","n"], ["k069","m"], 
         ["k070",","], ["k071","."], ["k072","-"], ["k073","⇧"], ["k081","⎈"], 
-        ["k083","⎇"], ["k084"," "], ["k085","⎇"], ["k087","⎈"]
+        ["k083","⎇"], ["k084"," "], ["k085","⎇"], ["k087","⎈"], ["k086","🇩🇪"]
     ]);
 
     private de_ba: Map<string, string> = new Map<string, string>([
@@ -200,7 +200,7 @@ export default class App extends Vue {
         ["k053","˘"], ["k061","⇧"], ["k062","ˍ"], ["k063","›"], ["k064","‹"], 
         ["k065","©"], ["k066","‚"], ["k067","‘"], ["k068","’"], ["k069","º"], 
         ["k070","×"], ["k071","÷"], ["k072","—"], ["k073","⇧"], ["k081","⎈"], 
-        ["k083","⎇"], ["k084"," "], ["k085","⎇"], ["k087","⎈"]
+        ["k083","⎇"], ["k084"," "], ["k085","⎇"], ["k087","⎈"], ["k086","🇩🇪"]
     ]);
     
     private de_la: Map<string, string> = new Map<string, string>([
@@ -215,7 +215,7 @@ export default class App extends Vue {
         ["k053","’"], ["k061","⇧"], ["k062","|"], ["k063","»"], ["k064","«"], 
         ["k065","¢"], ["k066","„"], ["k067","“"], ["k068","”"], ["k069","µ"], 
         ["k070","·"], ["k071","…"], ["k072","–"], ["k073","⇧"], ["k081","⎈"], 
-        ["k083","⎇"], ["k084"," "], ["k085","⎇"], ["k087","⎈"]
+        ["k083","⎇"], ["k084"," "], ["k085","⎇"], ["k087","⎈"], ["k086","🇩🇪"]
     ]);
 
     private l: Map<string, string> = this.fa_la;
