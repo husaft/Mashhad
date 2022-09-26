@@ -361,4 +361,14 @@ export default class App extends Vue {
 .key_white:hover {
     background-color: lightblue !important;
 }
+
+.time {
+    font-family: 'Lucida Console', monospace;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.date {
+    font-weight: bold;
+}
 </style>
