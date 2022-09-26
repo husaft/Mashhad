@@ -253,7 +253,7 @@ export default class App extends Vue {
             return;
         }
         if (keyVal === '⎈') {
-            // TODO
+            this.keysTxt = '';
             return;
         }
         if (keyVal === '🇩🇪') {
