@@ -246,7 +246,7 @@ export default class App extends Vue {
         this.switchLayout();
     }
 
-    private onKeyPush(me: any): void {
+    public onKeyPush(me: any): void {
         const keyId = me.target.id;
         let keyVal = this.l.get(keyId);
         if (keyVal === undefined) {
@@ -301,11 +301,11 @@ export default class App extends Vue {
     private romanTxt: string = '';
     private farsiTxt: string = '';
 
-    private onRoman(): void {
+    public onRoman(): void {
         this.farsiTxt = persianize(this.romanTxt);
     }
 
-    private onFarsi(): void {
+    public onFarsi(): void {
         this.romanTxt = romanize(this.farsiTxt);
     }
 }
