@@ -299,8 +299,16 @@ export default class App extends Vue {
         this.l = this.getLayout();
     }
 
+    private enableClock() {
+        const outer = this;
+        setInterval(function () {
+            outer.dates = App.getAllDates();
+        }, 30 * 1000);
+    }
+
     mounted() {
         this.switchLayout();
+        this.enableClock();
     }
 
     public onKeyPush(me: any): void {
