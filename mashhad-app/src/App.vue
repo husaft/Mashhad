@@ -3,19 +3,19 @@
     <b-card>
         <b-tabs content-class="mt-3">
             <b-tab title="World clock">
-                <b-list-group horizontal>
+                <b-list-group>
                     <b-list-group-item>
                         <center>
-                            Today is<br/><br/>
+                            Today is <br/>
                             <span class="date">{{ dates[1].date }}</span>
                         </center>
                     </b-list-group-item>
-                    <b-list-group-item :key="item.place[0]" v-for="item in dates">
+                    <b-list-group-item :key="item.place" v-for="item in dates">
                         <center>
-                            <p class="time">{{ item.time }}</p>
                             <b-button variant="outline-secondary">
-                                {{ item.place[0] }}<br/>{{ item.place[1] }}
+                                {{ item.place }}
                             </b-button>
+                            <span class="time">{{ item.time }}</span>
                         </center>
                     </b-list-group-item>
                 </b-list-group>
@@ -131,10 +131,10 @@ export default class App extends Vue {
 
     private static getTimeZones() {
         const data = [
-            { place: ["United","States"], zone: "America/New_York" },
-            { place: ["Deutsch-","land"], zone: "Europe/Berlin" },
-            { place: ["ایران"],           zone: "Asia/Tehran" },
-            { place: ["افغانستان"],       zone: "Asia/Kabul" }
+            { place: "United States",   zone: "America/New_York" },
+            { place: "Deutschland",     zone: "Europe/Berlin" },
+            { place: "ایران",           zone: "Asia/Tehran" },
+            { place: "افغانستان",       zone: "Asia/Kabul" }
         ];
         return data;
     }
@@ -148,7 +148,7 @@ export default class App extends Vue {
         return opt;
     }
 
-    private static getDate(zone: string, place: string[]) {
+    private static getDate(zone: string, place: string) {
         const opt = App.getTimeOpts(zone);
         const now = new Date();
         const txt = now.toLocaleString('en', opt);
