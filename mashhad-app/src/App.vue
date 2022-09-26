@@ -231,16 +231,29 @@ export default class App extends Vue {
             // TODO
             return;
         }
+        if (keyVal === '🇩🇪') {
+            this.isFarsi = true;
+            this.switchLayout();
+            return;
+        }
+        if (keyVal === '🇦🇫') {
+            this.isFarsi = false;
+            this.switchLayout();
+            return;
+        }
         if (keyVal === '⎇') {
-            // TODO
+            this.isAlt = !this.isAlt;
+            this.switchLayout();
             return;
         }
         if (keyVal === '⇩') {
-            // TODO
+            this.isShift = !this.isShift;
+            this.switchLayout();
             return;
         }
         if (keyVal === '⇧') {
-            // TODO
+            this.isShiftOnce = !this.isShiftOnce;
+            this.switchLayout();
             return;
         }
         if (keyVal === "←") {
@@ -252,6 +265,10 @@ export default class App extends Vue {
         }
         if (keyVal === "⇆") {
             keyVal = '\t';
+        }
+        if (this.isShiftOnce) {
+            this.isShiftOnce = false;
+            this.switchLayout();
         }
         this.keysTxt += keyVal;
     }
@@ -289,15 +306,23 @@ export default class App extends Vue {
     table-layout: fixed;
 }
 
-.key_white, .key_gray {
+.key_white, .key_gray, .key_gray_on {
     border-width: 2px !important;
     border-color: black !important;
     font-weight: bold !important;
 }
 
-.key_gray {
+.key_gray, .key_gray_on {
     background-color: lightgray !important;
     font-size: 1.3em !important;
+}
+
+.key_gray_on {
+    background-color: rosybrown !important;
+}
+
+.key_gray_on:hover {
+    background-color: lavender !important;
 }
 
 .key_gray:hover {
