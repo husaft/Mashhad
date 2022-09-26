@@ -159,9 +159,9 @@ export default class App extends Vue {
         const opt : any = { dateStyle: "full" };
         this.currentSelDTxt = [
             this.currentSelDate.toLocaleDateString('fa-IR', opt),
-            this.currentSelDate.toLocaleDateString('en-US-u-ca-persian', opt),
+            this.currentSelDate.toLocaleDateString('en-IR-u-ca-persian', opt),
             this.currentSelDate.toLocaleDateString('ar-SA', opt),
-            this.currentSelDate.toLocaleDateString('en-US-u-ca-islamic-umalqura', opt)
+            this.currentSelDate.toLocaleDateString('en-SA-u-ca-islamic-umalqura', opt)
         ];
     }
 
