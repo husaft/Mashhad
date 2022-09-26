@@ -2,6 +2,24 @@
   <div id="app">
     <b-card>
         <b-tabs content-class="mt-3">
+            <b-tab title="World clock">
+                <b-list-group horizontal>
+                    <b-list-group-item>
+                        <center>
+                            Today is<br/><br/>
+                            <span class="date">{{ dates[1].date }}</span>
+                        </center>
+                    </b-list-group-item>
+                    <b-list-group-item :key="item.place[0]" v-for="item in dates">
+                        <center>
+                            <p class="time">{{ item.time }}</p>
+                            <b-button variant="outline-secondary">
+                                {{ item.place[0] }}<br/>{{ item.place[1] }}
+                            </b-button>
+                        </center>
+                    </b-list-group-item>
+                </b-list-group>
+            </b-tab>
             <b-tab title="Input tools">
                 <b-form-textarea id="ta_keys" 
                     rows="1" max-rows="6" 
@@ -108,7 +126,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import { persianize, romanize } from "../../mashhad-lib/src/convert";
 
-@Component({})
+@Component({ components: { } })
 export default class App extends Vue {
 
     private fa_bn: Map<string, string> = new Map<string, string>([
