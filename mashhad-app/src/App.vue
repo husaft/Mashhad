@@ -129,6 +129,29 @@ import { persianize, romanize } from "../../mashhad-lib/src/convert";
 @Component({ components: { } })
 export default class App extends Vue {
 
+    private static getNowDate(): Date {
+        const now = new Date();
+        return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    }
+
+    public refreshDateTxt() {
+        const opt : any = { dateStyle: "full" };
+        this.currentSelDTxt = [
+            this.currentSelDate.toLocaleDateString('fa-IR', opt),
+            this.currentSelDate.toLocaleDateString('en-US-u-ca-persian', opt),
+            this.currentSelDate.toLocaleDateString('ar-SA', opt),
+            this.currentSelDate.toLocaleDateString('en-US-u-ca-islamic-umalqura', opt)
+        ];
+    }
+
+    public setToday() {
+        this.currentSelDate = App.getNowDate();
+        this.refreshDateTxt();
+    }
+
+    public currentSelDTxt: string[] = [ "---", "---" ];
+    public currentSelDate: Date = App.getNowDate();
+
     private static getTimeZones() {
         const data = [
             { place: "United States",   zone: "America/New_York" },
@@ -309,6 +332,7 @@ export default class App extends Vue {
     mounted() {
         this.switchLayout();
         this.enableClock();
+        this.refreshDateTxt();
     }
 
     public onKeyPush(me: any): void {
