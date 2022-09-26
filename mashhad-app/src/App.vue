@@ -147,6 +147,27 @@ export default class App extends Vue {
         };
         return opt;
     }
+
+    private static getDate(zone: string, place: string[]) {
+        const opt = App.getTimeOpts(zone);
+        const now = new Date();
+        const txt = now.toLocaleString('en', opt);
+        const tmp = txt.split(',');
+        const first = tmp[0].split(' ');
+        const month = first[0];
+        const day = first[1];
+        const year = tmp[1];
+        const date = day + ' ' + month + ' ' + year;
+        const time = tmp[2];
+        return { date, time, place };
+    }
+
+    private static getAllDates() {
+        return App.getTimeZones().map(z => App.getDate(z.zone, z.place));
+    }
+
+    public dates: any[] = App.getAllDates();
+
     private fa_bn: Map<string, string> = new Map<string, string>([
         ["k001","÷"], ["k002","!"], ["k003","´"], ["k004","ر"], ["k005","؋"], 
         ["k006","%"], ["k007","×"], ["k008","⸲"], ["k009","*"], ["k010",")"],
