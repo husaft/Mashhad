@@ -137,7 +137,7 @@
                     </tbody>
                 </table>
             </b-tab>
-            <b-tab title="Transliteration" active>
+            <b-tab title="Transliteration">
                 <label for="ta_roman"><h2>Roman:</h2></label>
                 <b-form-textarea id="ta_roman" 
                     rows="5" max-rows="6" 
@@ -193,6 +193,9 @@ export default class App extends Vue {
     private allWordItems: any[] = [
         { "p": "آب", "r": "āb", "d": "Wasser" },
         { "p": "سگ", "r": "sag", "d": "Hund" },
+        { "p": "کارگردان", "r": "kārgardān", "d": "Regisseur" },
+        { "p": "عسل", "r": "asal", "d": "Honig" },
+        { "p": "تحصیل کردن", "r": "tahsil kardan", "d": "studieren" },
     ];
 
     private static getNowDate(): Date {
