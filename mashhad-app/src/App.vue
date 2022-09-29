@@ -179,6 +179,38 @@ export default class App extends Vue {
     }
 
     public searchWord() {
+        if (this.allWordItems.length == 0) {
+
+
+
+
+
+
+
+            fetch('https://raw.githubusercontent.com/husaft/Mashhad/main/mashhad-lib/tsconfig.json')
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(document.URL);
+                    console.log(data);
+                });
+
+
+                
+
+
+
+
+
+            // this.allWordItems
+
+
+            // 
+
+
+
+
+
+        }
         const txt = App.patchLatin(this.wordText.toLowerCase());
         const array : any[] = [];
         for (const item of this.allWordItems) 
@@ -193,17 +225,12 @@ export default class App extends Vue {
     public wordText: string = '';
     public wordItems: any[] = [];
     public wordFields: any[] = [
-        { key: 'p', label: 'Farsi', sortable: true },
-        { key: 'r', label: 'Roman', sortable: true },
+        { key: 'p', label: 'Farsi',   sortable: true },
+        { key: 'r', label: 'Roman',   sortable: true },
         { key: 'd', label: 'Deutsch', sortable: true }
     ];
 
     private allWordItems: any[] = [
-        { "p": "آب", "r": "āb", "d": "Wasser" },
-        { "p": "سگ", "r": "sag", "d": "Hund" },
-        { "p": "کارگردان", "r": "kārgardān", "d": "Regisseur" },
-        { "p": "عسل", "r": "asal", "d": "Honig" },
-        { "p": "تحصیل کردن", "r": "tahsil kardan", "d": "studieren" },
     ];
 
     private static getNowDate(): Date {
@@ -410,6 +437,11 @@ export default class App extends Vue {
         this.switchLayout();
         this.enableClock();
         this.refreshDateTxt();
+
+
+
+
+        this.searchWord();
     }
 
     public onKeyPush(me: any): void {
