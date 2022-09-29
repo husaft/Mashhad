@@ -198,36 +198,6 @@ export default class App extends Vue {
 
     public searchWord() {
         if (this.allWordItems.length == 0) {
-
-
-
-
-
-
-
-            fetch('https://raw.githubusercontent.com/husaft/Mashhad/main/mashhad-lib/tsconfig.json')
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log(document.URL);
-                    console.log(data);
-                });
-
-
-                
-
-
-
-
-
-            // this.allWordItems
-
-
-            // 
-
-
-
-
-
         }
         const txt = App.patchLatin(this.wordText.toLowerCase());
         const array : any[] = [];
