@@ -178,6 +178,24 @@ export default class App extends Vue {
                 .replace('ž', 'z');
     }
 
+    private reloadDict() {
+        const domain = 'raw.githubusercontent.com';
+        const user = 'husaft';
+        const proj = 'Mashhad';
+        const lang = 'german';
+        const url = `https://${domain}/${user}/${proj}/main/dict/${lang}.json`;
+        fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+                const some = data.map((i: any) => {
+                    const o = { p: i.p, r: i.r, d: i.d.join(', ') };
+                    return o;
+                });
+                this.allWordItems = some;
+                this.searchWord();
+            });
+    }
+
     public searchWord() {
         if (this.allWordItems.length == 0) {
 
