@@ -175,6 +175,7 @@ export default class App extends Vue {
                 .replaceAll('ǧ', 'g')
                 .replaceAll('ḫ', 'h')
                 .replaceAll('š', 's')
+                .replaceAll('ʻ', '' )
                 .replaceAll('ž', 'z');
     }
 
