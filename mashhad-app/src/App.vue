@@ -169,13 +169,21 @@ export default class App extends Vue {
         this.wordItems = [];
     }
 
+    private static patchLatin(txt: string): string {
+        return txt.replace('ā', 'a')
+                .replace('č', 'c')
+                .replace('ǧ', 'g')
+                .replace('ḫ', 'h')
+                .replace('š', 's')
+                .replace('ž', 'z');
+    }
+
     public searchWord() {
-        const txt = this.wordText.toLowerCase()
-                    .replace('ā', 'a');
+        const txt = App.patchLatin(this.wordText.toLowerCase());
         const array : any[] = [];
         for (const item of this.allWordItems) 
-            if (item.p.toLowerCase().includes(txt) || 
-                item.r.toLowerCase().includes(txt) || 
+            if (item.p.includes(txt) || 
+                App.patchLatin(item.r).includes(txt) || 
                 item.d.toLowerCase().includes(txt)) {
                 array.push(item);
             }
