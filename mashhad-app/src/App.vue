@@ -236,11 +236,14 @@ export default class App extends Vue {
                 App.patchLatin(item.r).includes(txt) || 
                 item.d.toLowerCase().includes(txt)) {
                 array.push(item);
+                if (array.length >= this.maxWordCount)
+                    break;
             }
         this.wordItems = array;
     }
 
     public wordText: string = '';
+    private maxWordCount: number = 16;
     public wordItems: any[] = [];
     public wordFields: any[] = [
         { key: 'p', label: 'Farsi',   sortable: true },
@@ -455,11 +458,6 @@ export default class App extends Vue {
         this.switchLayout();
         this.enableClock();
         this.refreshDateTxt();
-
-
-
-
-        this.searchWord();
     }
 
     public onKeyPush(me: any): void {
