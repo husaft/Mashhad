@@ -170,12 +170,12 @@ export default class App extends Vue {
     }
 
     private static patchLatin(txt: string): string {
-        return txt.replace('ā', 'a')
-                .replace('č', 'c')
-                .replace('ǧ', 'g')
-                .replace('ḫ', 'h')
-                .replace('š', 's')
-                .replace('ž', 'z');
+        return txt.replaceAll('ā', 'a')
+                .replaceAll('č', 'c')
+                .replaceAll('ǧ', 'g')
+                .replaceAll('ḫ', 'h')
+                .replaceAll('š', 's')
+                .replaceAll('ž', 'z');
     }
 
     private reloadDict() {
