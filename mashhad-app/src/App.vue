@@ -2,6 +2,20 @@
   <div id="app">
     <b-card>
         <b-tabs content-class="mt-3">
+            <b-tab title="Dictionary" active>
+                <b-button-toolbar>
+                    <b-button pill variant="outline-danger" 
+                              @click="clearWord">Clear</b-button>
+                    <b-input-group size="sm">
+                        <b-form-input v-model="wordText" 
+                                      @input="searchWord" 
+                                      placeholder="Enter some word" />
+                    </b-input-group>
+                    <!-- <b-button pill variant="outline-success">Search</b-button> -->
+                </b-button-toolbar>
+                <br/>
+                <b-table striped hover :items="wordItems" :fields="wordFields"></b-table>
+            </b-tab>
             <b-tab title="Calendar">
                 <b-calendar block v-model="currentSelDate" 
                             class="border rounded p-2" 
@@ -149,6 +163,37 @@ import { persianize, romanize } from "../../mashhad-lib/src/convert";
 
 @Component({ components: { } })
 export default class App extends Vue {
+
+    public clearWord() {
+        this.wordText = '';
+        this.wordItems = [];
+    }
+
+    public searchWord() {
+        const txt = this.wordText.toLowerCase()
+                    .replace('ā', 'a');
+        const array : any[] = [];
+        for (const item of this.allWordItems) 
+            if (item.p.toLowerCase().includes(txt) || 
+                item.r.toLowerCase().includes(txt) || 
+                item.d.toLowerCase().includes(txt)) {
+                array.push(item);
+            }
+        this.wordItems = array;
+    }
+
+    public wordText: string = '';
+    public wordItems: any[] = [];
+    public wordFields: any[] = [
+        { key: 'p', label: 'Farsi', sortable: true },
+        { key: 'r', label: 'Roman', sortable: true },
+        { key: 'd', label: 'Deutsch', sortable: true }
+    ];
+
+    private allWordItems: any[] = [
+        { "p": "آب", "r": "āb", "d": "Wasser" },
+        { "p": "سگ", "r": "sag", "d": "Hund" },
+    ];
 
     private static getNowDate(): Date {
         const now = new Date();
