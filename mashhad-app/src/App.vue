@@ -198,6 +198,8 @@ export default class App extends Vue {
 
     public searchWord() {
         if (this.allWordItems.length == 0) {
+            this.reloadDict();
+            return;
         }
         const txt = App.patchLatin(this.wordText.toLowerCase());
         const array : any[] = [];
